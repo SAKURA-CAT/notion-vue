@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "types": ["estree"],
+    "target": "ES6",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "public"],
+  "include": ["src/**/*"]
+}
