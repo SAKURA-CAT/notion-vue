@@ -15,7 +15,10 @@ notion-vue 是一个开源的模块化内容构建编辑器，它不同于传统
 
 本项目依赖于vue3，使用vite构建项目，使用的node与npm版本为：  
 node `18.12.1`（LTS） npm `8.19.2`（默认）  
-项目依赖：
+
+#### 依赖
+
+项目主要依赖：
 
 - [Vite](https://cn.vitejs.dev)：构建工具链；
 - [Pinia](https://pinia.vuejs.org/zh/)：Vue项目状态管理，用于各种文本模块之间的数据共享和整体数据导出；
@@ -28,7 +31,15 @@ node `18.12.1`（LTS） npm `8.19.2`（默认）
 - [ESLint](https://eslint.org)：代码检查工具；
 - [Babel](https://babeljs.io/docs/en/)：作用在于使编写的高版本JS能兼容低版本的浏览器环境（TODO，暂未配置）
 
-#### 开发工具
+### 运行与部署
+
+#### 如何运行
+
+clone本项目后，执行`npm install`来安装所有的依赖，然后执行`npm run dev`即可在本地运行本项目，为了保证项目的稳定运行，node版本请选择**18+**
+
+#### 如何部署
+
+### 开发工具
 
 编辑器推荐使用 [VS Code](https://code.visualstudio.com/)，推荐安装下列插件：
 

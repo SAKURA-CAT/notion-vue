@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+      "Vue.volar",
+      "Vue.vscode-typescript-vue-plugin",
+      "esbenp.prettier-vscode",
+      "PKief.material-icon-theme",
+      "bradlc.vscode-tailwindcss",
+      "lokalise.i18n-ally",
+      "gruntfuggly.todo-tree",
+      "editorconfig.editorconfig",
+      "eamodio.gitlens",
+      "henrynguyen5-vsc.vsc-nvm"
+    ]
+  }
+  
