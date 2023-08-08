@@ -14,12 +14,10 @@ notion-vue 是一个开源的模块化内容构建编辑器，它不同于传统
 
 ## 代码架构设计
 
-### 开发环境与框架
+### 🫣 开发环境与框架
 
 本项目依赖于vue3，使用vite构建项目，使用的node与npm版本为：  
 node `18.12.1`（LTS） npm `8.19.2`（默认）  
-
-#### 依赖
 
 项目主要依赖：
 
@@ -34,15 +32,7 @@ node `18.12.1`（LTS） npm `8.19.2`（默认）
 - [ESLint](https://eslint.org)：代码检查工具；
 - [Babel](https://babeljs.io/docs/en/)：作用在于使编写的高版本JS能兼容低版本的浏览器环境（TODO，暂未配置）
 
-### 运行与部署
-
-#### 如何运行
-
-clone本项目后，执行`npm install`来安装所有的依赖，然后执行`npm run dev`即可在本地运行本项目，为了保证项目的稳定运行，node版本请选择**18+**
-
-#### 如何部署
-
-### 开发工具
+### 🔧 开发工具
 
 编辑器推荐使用 [VS Code](https://code.visualstudio.com/)，推荐安装下列插件：
 
@@ -54,14 +44,34 @@ clone本项目后，执行`npm install`来安装所有的依赖，然后执行`n
 
 这些组件在 [.vscode/extensions.json](./.vscode/extensions.json) 中定义
 
-### 代码结构介绍
+## 代码结构介绍
 
-### 实现块编辑
+> TODO
 
-### 输出与数据保存
+## TODO-List
+
+### 🎉 已经实现的模块
+
+- [x] 整体渲染逻辑
+- [x] 光标位置修改工具
+- [x] 文本框输入组件
+
+### 🤔 待开发的模块
+
+- [] 组件间光标移动
+- [] 标题组件
+- [] 提示栏组件
+- [] 无序列表
+- [] 有序列表
+- [] 其他内容...
+
+## 其他
+
+### 📦 输出与数据保存
 
 严格来讲本项目没有接入后端数据持久化存储，但是为了方便在实际业务中实现此效果，期望实现自下而上的JSON格式数据输出。
 
-## 参考
+### 🥸 参考
 
-1. [All-in-one](https://github.com/CedarXi/All-in-one/tree/master): 借鉴其模块化组件开发方式，但是他使用vue2+vue cli作为开发框架，存在一些性能问题和bug。
+1. [All-in-one](https://github.com/CedarXi/All-in-one/tree/master): 借鉴其模块化组件开发方式，但是他使用vue2+vue cli作为开发框架，存在一些性能问题和bug
+2. [contenteditable](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable): mmdn开发文档
