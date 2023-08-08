@@ -2,11 +2,10 @@
 
 notion-vue 是一个开源的模块化内容构建编辑器，它不同于传统的文本编辑器，所有的内容都是以模块的概念来打造。交互与界面样式灵感来自[Notion](https://www.notion.so)。
 
-> 如果要了解关于本项目的更多详细内容，请[点击此处查看](https://clear-degree-730.notion.site/notion-vue-215882dc39914eaca29d7d6e1b174686?pvs=4)
-
 项目Demo地址：[https://notion-vue.vercel.app](https://notion-vue.vercel.app)
 
-> 项目还在完善中，有问题可提[issue](https://github.com/SAKURA-CAT/notion-vue/issues)
+> 项目还在完善中，有问题可提[issue](https://github.com/SAKURA-CAT/notion-vue/issues)  
+> 如果要了解关于本项目的更多详细内容，请[点击此处查看](https://clear-degree-730.notion.site/notion-vue-215882dc39914eaca29d7d6e1b174686?pvs=4)
 
 ## 项目来历
 
