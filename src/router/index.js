@@ -22,6 +22,7 @@ const routes = [
 // 创建路由（历史模式）
 const router = createRouter({
   history: createWebHistory(),
+  base: '/',
   routes
 })
 
