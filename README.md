@@ -46,6 +46,8 @@ node `18.12.1`（LTS） npm `8.19.2`（默认）
 
 ## 代码结构介绍
 
+> TODO
+
 ## TODO-List
 
 ### 🎉 已经实现的模块
@@ -71,4 +73,5 @@ node `18.12.1`（LTS） npm `8.19.2`（默认）
 
 ### 🥸 参考
 
-1. [All-in-one](https://github.com/CedarXi/All-in-one/tree/master): 借鉴其模块化组件开发方式，但是他使用vue2+vue cli作为开发框架，存在一些性能问题和bug。
+1. [All-in-one](https://github.com/CedarXi/All-in-one/tree/master): 借鉴其模块化组件开发方式，但是他使用vue2+vue cli作为开发框架，存在一些性能问题和bug
+2. [contenteditable](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable): mmdn开发文档
