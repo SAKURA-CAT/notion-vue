@@ -3,6 +3,7 @@
 import { focusADom } from '@/utils/dom'
 import { useEditStore } from '@/store'
 import { nextTick, onMounted } from 'vue'
+import cover from '@/assets/image/cover.jpeg'
 const editStore = useEditStore()
 editStore.init()
 const avatar = 'https://avatars.githubusercontent.com/u/79990647?v=4'
@@ -109,9 +110,12 @@ const handleDelete = (index, msg) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center min-h-screen">
+  <div class="flex flex-col items-center min-h-screen relative">
+    <img class="h-60 w-screen object-cover object-top" :src="cover" />
+
     <!-- 标题介绍部分，这部分不可编辑 -->
-    <div class="max-w-full w-[900px] min-w-0 px-24 pt-32" ref="title">
+    <div class="max-w-full w-[900px] min-w-0 px-24 pt-20" ref="title">
+      <span class="text-7xl absolute top-60 -translate-y-[50%] ml-3">🥳</span>
       <h1 class="text-[40px] leading-[1.2] font-bold">Notion-Vue</h1>
       <!-- 评论与介绍 -->
       <div class="mt-5 flex flex-col gap-2 text-sm">
