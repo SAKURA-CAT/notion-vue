@@ -1,6 +1,6 @@
 <script setup>
 // import BlockLine from '@/components/BlockLine.vue'
-import { focusADom } from '@/utils/dom'
+import { focusADom, getCaretPosition, getLines } from '@/utils/dom'
 import { useEditStore } from '@/store'
 import { nextTick, onMounted } from 'vue'
 import cover from '@/assets/image/cover.jpeg'
@@ -76,16 +76,63 @@ const handleEnter = (index, msg, leftMsg) => {
   })
 }
 // 上下移动事件捕获
-const handleMove = (index, { offset, direction }) => {}
+const handleMove = (index, { offset, direction }) => {
+  // 排除特殊情况
+  if (index === 0 && (direction === 'ArrowUp' || direction === 'ArrowLeft')) return
+  if (index === messages.value.length - 1 && (direction === 'ArrowDown' || direction === 'ArrowRight')) return
+  // 修改当前光标位置
+  switch (direction) {
+    case 'ArrowLeft':
+      // 光标移动到上一个block的末尾
+      focusADom(messages.value[index - 1].id)
+      break
+    case 'ArrowRight':
+      // 光标移动到下一个block的开头
+      focusADom(messages.value[index + 1].id, () => 0)
+      break
+    case 'ArrowUp':
+      // 光标移动到上一个block的当前偏移位置
+      const { offset: upOffset } = offset
+      // 获取上一个block的字符串信息
+      const lines = getLines(messages.value[index - 1].id)
+      // console.log(index - 1, lines)
+      // 移动到最后一行的相应偏移的位置，如果偏移位置超过了最后一行的长度，那么就移动到最后一行的末尾
+      const lastLine = lines.words[lines.words.length - 1]
+      if (lastLine.length < upOffset) {
+        focusADom(messages.value[index - 1].id)
+      } else {
+        // 移动到相应的位置
+        const o = lines.maxCol * (lines.linesLength - 1) + upOffset
+        focusADom(messages.value[index - 1].id, () => o)
+      }
+      break
+    case 'ArrowDown':
+      // 光标移动到下一个block的当前偏移位置
+      const { offset: downOffset } = offset
+      // 获取下一个block的字符串信息
+      const downLines = getLines(messages.value[index + 1].id)
+      // 移动到第一行的相应偏移的位置，如果偏移位置超过了第一行的长度，那么就移动到第一行的开头
+      const firstLine = downLines.words[0]
+      if (firstLine.length < downOffset) {
+        focusADom(messages.value[index + 1].id)
+      } else {
+        // 移动到相应的位置
+        focusADom(messages.value[index + 1].id, () => downOffset)
+      }
+      break
+  }
+}
 
 // 输入事件捕获
 const handleInput = (index, msg) => {
   // console.log(msg)
+  // 保存当前的光标位置
+  const offset = getCaretPosition(undefined, messages.value[index].id)
   editStore.updateMessage(index, {
     content: msg
   })
   nextTick(() => {
-    focusADom(messages.value[index].id)
+    focusADom(messages.value[index].id, () => offset.offset)
   })
 }
 

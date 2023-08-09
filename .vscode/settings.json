@@ -1,4 +1,6 @@
 {
+  /** live server**/
+  "liveServer.settings.root": "/dist/", //设置根目录，也就是打开的文件会在该目录下找
   /** 文件夹材质 */
   "workbench.iconTheme": "material-icon-theme",
   /* 自定义图标关联 */
