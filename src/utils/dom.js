@@ -105,7 +105,7 @@ export function getCaretPosition(dom, id) {
  * @param { string } font dom节点的font属性
  * @returns
  */
-export function breakWords(text, maxWidth, font) {
+function breakWords(text, maxWidth, font) {
   // 生成文本测量对象
   const canvas = document.createElement('canvas')
   const context = canvas.getContext('2d')
@@ -124,6 +124,30 @@ export function breakWords(text, maxWidth, font) {
   }
   lines.push(currentLine)
   return lines
+}
+/**
+ * 改进breakWords函数，获取dom节点的行数组，输入的是dom节点的id
+ * @param { string } id
+ */
+export function getLines(id) {
+  const dom = document.getElementById(id)
+  // 获取锚点元素的文本内容
+  const textContent = dom.textContent
+  // 拆分行数组
+  const lines = {
+    text: textContent,
+    words: breakWords(
+      textContent,
+      Number(window.getComputedStyle(dom).width.split('px')[0]),
+      window.getComputedStyle(dom).font
+    )
+  }
+  return {
+    ...lines,
+    linesLength: lines.words.length,
+    // 最大列数
+    maxCol: lines.words[0]?.length || 0
+  }
 }
 
 /**
