@@ -1,6 +1,6 @@
 <script setup>
 // import BlockLine from '@/components/BlockLine.vue'
-import { focusADom } from '@/utils/dom'
+import { focusADom, getCaretPosition } from '@/utils/dom'
 import { useEditStore } from '@/store'
 import { nextTick, onMounted } from 'vue'
 import cover from '@/assets/image/cover.jpeg'
@@ -76,16 +76,20 @@ const handleEnter = (index, msg, leftMsg) => {
   })
 }
 // 上下移动事件捕获
-const handleMove = (index, { offset, direction }) => {}
+const handleMove = (index, { offset, direction }) => {
+  console.log(offset, direction)
+}
 
 // 输入事件捕获
 const handleInput = (index, msg) => {
   // console.log(msg)
+  // 保存当前的光标位置
+  const offset = getCaretPosition(undefined, messages.value[index].id)
   editStore.updateMessage(index, {
     content: msg
   })
   nextTick(() => {
-    focusADom(messages.value[index].id)
+    focusADom(messages.value[index].id, () => offset.offset)
   })
 }
 

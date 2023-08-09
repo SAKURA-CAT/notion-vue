@@ -28,8 +28,8 @@ const handleInput = (e) => {
     _message.value = ''
   }
   if (e.isComposing) return
-  // debouncedInput()
-  emits('input', props.index, _message.value)
+  debouncedInput()
+  // emits('input', props.index, _message.value)
 }
 
 const debouncedInput = debounce(() => {
@@ -64,12 +64,16 @@ function handleEnter(msg) {
   // console.log('leftMsg', leftMsg)
   emits('returned', props.index, msg, leftMsg)
 }
-// 键盘事件监听
+
+// 保存上一个keydown事件
+let lastKeydownEvent = null
 function handleKeydown(e) {
   // console.log(e.key)
   switch (e.key) {
     case 'Backspace':
       // console.log('触发BlockLine的删除事件')
+      // 如果上一个keydown事件的isComposing为true，那么不触发删除事件
+      if (lastKeydownEvent?.isComposing) break
       // 如果当前光标在第一行第一列，那么触发删除事件
       const offset = getCaretPosition(e.target)
       if (offset.isFirstRow && offset.isFirstCol && !hasSelection()) {
@@ -80,6 +84,7 @@ function handleKeydown(e) {
     default:
       handleMove(e)
   }
+  lastKeydownEvent = e
 }
 // 上下移动事件监听，回传当前光标位置与移动方向，光标位置为相对于当前行的位置
 function handleMove(e) {
