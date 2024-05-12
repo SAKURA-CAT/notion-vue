@@ -214,7 +214,7 @@ const handleDelete = (index, msg) => {
 
 <style lang="scss" scoped>
 .content {
-  @apply max-w-full w-[900px] min-w-0 px-24 pt-4 grow flex flex-col;
+  @apply max-w-full w-[900px] min-w-0 px-20 pt-4 grow flex flex-col;
   $last-child-height: 100px;
   .add-block {
     &:last-child {
