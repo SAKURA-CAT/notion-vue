@@ -3,7 +3,7 @@
     <img :src="avatar" class="w-5 h-5 rounded-full border box-border" />
     <div class="overflow-hidden w-full">
       <p class="font-semibold">{{ username }}</p>
-      <p class="mt-0.5 text-gray-800 w-full cursor-text">
+      <p class="mt-0.5 text-gray-800 w-full cursor-text flex items-center">
         <slot></slot>
       </p>
     </div>

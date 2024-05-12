@@ -1,0 +1,11 @@
+{
+  "name": "Notion-Vue",
+  "short_name": "NV",
+  "start_url": "/",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/notion.icns"
+    }
+  ]
+}

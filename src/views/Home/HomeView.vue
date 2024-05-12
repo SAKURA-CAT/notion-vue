@@ -5,6 +5,7 @@ import { useEditStore } from '@/store'
 import { nextTick, onMounted } from 'vue'
 import cover from '@/assets/image/cover.jpeg'
 import HeaderComment from './components/HeaderComment.vue'
+import PwaButton from './components/PwaButton.vue'
 const editStore = useEditStore()
 editStore.init()
 const avatar = 'https://avatars.githubusercontent.com/u/79990647?v=4'
@@ -174,7 +175,7 @@ const handleDelete = (index, msg) => {
           </a>
         </HeaderComment>
         <HeaderComment :avatar="avatar" username="SAKURA-CAT">
-          <button class="text-gray-500 hover:underline underline-offset-2">点击此处</button>
+          <PwaButton class="text-gray-500 mr-1" text="点击此处" />
           测试订阅PWA消息~
         </HeaderComment>
         <!-- 添加评论 -->
