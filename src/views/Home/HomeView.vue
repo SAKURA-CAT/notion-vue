@@ -163,7 +163,7 @@ const handleDelete = (index, msg) => {
     <img class="h-60 w-screen object-cover object-top" :src="cover" />
 
     <!-- 标题介绍部分，这部分不可编辑 -->
-    <div class="max-w-full w-[900px] min-w-0 px-24 pt-20" ref="title">
+    <div class="max-w-full w-[900px] min-w-0 px-20 pt-20" ref="title">
       <span class="text-7xl absolute top-60 -translate-y-[50%] ml-3">🥳</span>
       <h1 class="text-[40px] leading-[1.2] font-bold">Notion-Vue</h1>
       <!-- 评论与介绍 -->
@@ -171,7 +171,9 @@ const handleDelete = (index, msg) => {
         <!-- 一条评论 -->
         <HeaderComment :avatar="avatar" username="SAKURA-CAT">
           项目链接：<a class="text-gray-500" href="https://github.com/SAKURA-CAT/notion-vue" target="_blank">
-            <span class="border-b border-gray-300">https://github.com/SAKURA-CAT/notion-vue</span>
+            <span class="border-b border-gray-300 sm:w-auto w-36 truncate block">
+              https://github.com/SAKURA-CAT/notion-vue
+            </span>
           </a>
         </HeaderComment>
         <HeaderComment :avatar="avatar" username="SAKURA-CAT">
