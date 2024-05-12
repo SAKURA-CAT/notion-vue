@@ -4,6 +4,8 @@ import { focusADom, getCaretPosition, getLines } from '@/utils/dom'
 import { useEditStore } from '@/store'
 import { nextTick, onMounted } from 'vue'
 import cover from '@/assets/image/cover.jpeg'
+import HeaderComment from './components/HeaderComment.vue'
+import PwaButton from './components/PwaButton.vue'
 const editStore = useEditStore()
 editStore.init()
 const avatar = 'https://avatars.githubusercontent.com/u/79990647?v=4'
@@ -167,17 +169,15 @@ const handleDelete = (index, msg) => {
       <!-- 评论与介绍 -->
       <div class="mt-5 flex flex-col gap-2 text-sm">
         <!-- 一条评论 -->
-        <div class="flex shrink-0 gap-3 w-full">
-          <img :src="avatar" class="w-5 h-5 rounded-full border box-border" />
-          <div class="overflow-hidden w-full">
-            <p class="font-semibold">SAKURA-CAT</p>
-            <p class="mt-0.5 text-gray-800 w-full cursor-text">
-              项目链接：<a class="text-gray-500" href="https://github.com/SAKURA-CAT/notion-vue" target="_blank">
-                <span class="border-b border-gray-300">https://github.com/SAKURA-CAT/notion-vue</span>
-              </a>
-            </p>
-          </div>
-        </div>
+        <HeaderComment :avatar="avatar" username="SAKURA-CAT">
+          项目链接：<a class="text-gray-500" href="https://github.com/SAKURA-CAT/notion-vue" target="_blank">
+            <span class="border-b border-gray-300">https://github.com/SAKURA-CAT/notion-vue</span>
+          </a>
+        </HeaderComment>
+        <HeaderComment :avatar="avatar" username="SAKURA-CAT">
+          <PwaButton class="text-gray-500 mr-1" text="点击此处" />
+          测试订阅PWA消息~
+        </HeaderComment>
         <!-- 添加评论 -->
         <div class="flex shrink-0 gap-3 w-full items-center">
           <img :src="avatar" class="w-5 h-5 rounded-full border box-border" />

@@ -11,7 +11,7 @@
   /** 代码格式化部分，eslint和prettier */
   "update.enableWindowsBackgroundUpdates": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   // 每次保存的时候自动格式化
   "editor.formatOnSave": true,
