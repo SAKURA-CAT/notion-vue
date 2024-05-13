@@ -1,5 +1,5 @@
 <template>
-  <button class="inline-flex items-center gap-1" @click="handleClick">
+  <button class="inline-flex items-center gap-1" @click="addToDesktop">
     <DownloadIcon class="w-4 h-4" />
     <p class="hover:underline underline-offset-2">{{ text }}</p>
   </button>
@@ -19,34 +19,17 @@ defineProps({
   }
 })
 
-/**
- * @description: 点击按钮，触发安装提示
- */
-const handleClick = () => {
-  console.log('click event:', window.deferredPrompt)
-  if (window.deferredPrompt) {
-    window.deferredPrompt.prompt()
-    window.deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt')
-      } else {
-        console.log('User dismissed the A2HS prompt')
-      }
-      window.deferredPrompt = null
-    })
-  }
-}
+var deferredPrompt = null
 
-window.addEventListener('beforeinstallprompt', (evt) => {
-  console.log('🎯 beforeinstallprompt Event fired')
-  // 阻止浏览器默认的安装行为触发 (目前仅限安卓 Chrome 有默认安装行为)
-  evt.preventDefault()
-  // 缓存 beforeinstallprompt 事件对象
-  evtBeforeInstallPrompt = evt
-  // 显示安装按钮
-  updateShow(true)
-  return false
+window.addEventListener('beforeinstallprompt', function (e) {
+  console.log('beforeinstallprompt Event fired')
+  e.preventDefault() // Prevents prompt display
 })
+
+// 手动触发PWA安装
+function addToDesktop() {
+  deferredPrompt.prompt()
+}
 </script>
 
 <style lang="scss" scoped></style>

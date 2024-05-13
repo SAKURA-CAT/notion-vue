@@ -7,6 +7,33 @@ import './style.css'
 const app = createApp(App)
 const pinia = createPinia()
 
+// ---------------------------------- 注册sw ----------------------------------
+
+if ('serviceWorker' in navigator) {
+  // if (import.meta.env.DEV) {
+  //   console.log('Service Worker 注销中...')
+  //   navigator.serviceWorker.getRegistrations().then(function (registrations) {
+  //     registrations.forEach(function (registration) {
+  //       registration
+  //         .unregister()
+  //         .then(function () {
+  //           console.log('Service Worker 注销成功')
+  //         })
+  //         .catch(function (error) {
+  //           console.error('Service Worker 注销失败:', error)
+  //         })
+  //     })
+  //   })
+  // }
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(function (registration) {
+      console.log('Service Worker registered with scope:', registration.scope)
+    })
+    .catch(function (error) {
+      console.log('Service Worker registration failed:', error)
+    })
+}
 // 使用pinia
 app.use(pinia)
 
