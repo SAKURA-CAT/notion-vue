@@ -30,16 +30,8 @@ const click = (e) => {
 // 发送推送消息
 function sendPushNotification() {
   console.log('sendPushNotification')
-  navigator.serviceWorker.ready.then(function (registration) {
-    // console.log('registration', registration)
-    console.log('registration.showNotification')
-    registration.showNotification('Hello World!', {
-      body: 'Here is a notification body!',
-      icon: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
-      vibrate: [200, 100, 200, 100, 200, 100, 200],
-      tag: 'vibration-sample'
-    })
-  })
+  navigator.serviceWorker.controller.postMessage('notification')
+  alert('等待一会后，你将会收到一条消息～')
 }
 </script>
 

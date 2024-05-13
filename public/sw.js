@@ -56,14 +56,30 @@ self.addEventListener('fetch', function (event) {
   )
 })
 
-// 监听推送事件
-self.addEventListener('push', function (event) {
-  // 接收到推送事件
-  const options = {
-    body: 'This is a push notification!',
-    icon: '/512x512.png'
-    // badge: 'path/to/badge.png'
-  }
+// // 监听推送事件
+// self.addEventListener('push', function (event) {
+//   // 接收到推送事件
+//   const options = {
+//     body: 'This is a push notification!',
+//     icon: '/512x512.png'
+//     // badge: 'path/to/badge.png'
+//   }
 
-  event.waitUntil(self.registration.showNotification('Push Notification', options))
+//   event.waitUntil(self.registration.showNotification('Push Notification', options))
+// })
+
+// 主线程消息监听
+self.addEventListener('message', function (event) {
+  // event.source.postMessage('Service Worker 已收到消息')
+  if (event.data === 'notification') {
+    // console.log('Service Worker 收到消息:', event.data)
+    const options = {
+      body: 'Cunyue notes: This is a push notification!',
+      icon: '/512x512.png'
+      // badge: 'path/to/badge.png'
+    }
+    self.registration.showNotification('Hello World!', options)
+  } else {
+    console.log('Service Worker 收到未知消息:', event.data)
+  }
 })
