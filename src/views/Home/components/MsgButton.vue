@@ -31,7 +31,7 @@ const click = (e) => {
 function sendPushNotification() {
   console.log('sendPushNotification')
   navigator.serviceWorker.controller.postMessage('notification')
-  alert('等待一会后，你将会收到一条消息～')
+  alert('现在你可以将应用放在后台，等待一会后，你将会收到一条消息～')
 }
 </script>
 

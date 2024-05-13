@@ -78,7 +78,10 @@ self.addEventListener('message', function (event) {
       icon: '/512x512.png'
       // badge: 'path/to/badge.png'
     }
-    self.registration.showNotification('Hello World!', options)
+    this.setTimeout(() => {
+      console.log('Service Worker 发送消息:', 'Hello World!')
+      self.registration.showNotification('Hello World!', options)
+    }, 5000)
   } else {
     console.log('Service Worker 收到未知消息:', event.data)
   }

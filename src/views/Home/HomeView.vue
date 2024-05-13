@@ -182,7 +182,7 @@ const handleDelete = (index, msg) => {
           <PwaButton class="text-gray-500 mr-1" text="点击此处" />
           安装PWA应用~
         </HeaderComment>
-        <HeaderComment :avatar="avatar" username="SAKURA-CAT">
+        <HeaderComment :avatar="avatar" username="SAKURA-CAT" v-else>
           <MsgButton class="text-gray-500 mr-1" text="点击此处" />
           测试PWA内消息推送~
         </HeaderComment>
