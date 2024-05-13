@@ -23,7 +23,7 @@ self.addEventListener('activate', function (event) {
       return Promise.all(
         cacheNames.map(function (cacheName) {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
-            console.log('删除缓存:', cacheName)
+            // console.log('删除缓存:', cacheName)
             return caches.delete(cacheName)
           }
         })
@@ -34,18 +34,18 @@ self.addEventListener('activate', function (event) {
 
 // 直接从缓存中取，同时会发起网络请求 更新本地缓存，这意味着资源不会立即更新，而是会在发起第二次请求后才是最新的
 self.addEventListener('fetch', function (event) {
-  console.log('fetch:', event.request.url)
+  // console.log('fetch:', event.request.url)
   event.respondWith(
     caches.open(cacheName).then(async function (cache) {
       return cache.match(event.request).then(function (response) {
         const fetchPromise = fetch(event.request).then(function (networkResponse) {
           // 如果请求的scheme不是当前页面的scheme，直接返回
           if (!networkResponse || !networkResponse.url || networkResponse.url.startsWith('chrome-extension://')) {
-            console.log('请求的scheme不是当前页面的scheme:', event.request.url)
+            // console.log('请求的scheme不是当前页面的scheme:', event.request.url)
             return networkResponse
           }
           cache.put(event.request, networkResponse.clone())
-          console.log('更新缓存:', event.request.url)
+          // console.log('更新缓存:', event.request.url)
           return networkResponse
         })
 
