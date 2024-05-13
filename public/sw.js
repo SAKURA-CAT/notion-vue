@@ -18,6 +18,7 @@ self.addEventListener('install', function (event) {
 
 // 激活 Service Worker
 self.addEventListener('activate', function (event) {
+  console.log('激活 Service Worker')
   event.waitUntil(
     caches.keys().then(function (cacheNames) {
       return Promise.all(
@@ -53,4 +54,16 @@ self.addEventListener('fetch', function (event) {
       })
     })
   )
+})
+
+// 监听推送事件
+self.addEventListener('push', function (event) {
+  // 接收到推送事件
+  const options = {
+    body: 'This is a push notification!',
+    icon: '/512x512.png'
+    // badge: 'path/to/badge.png'
+  }
+
+  event.waitUntil(self.registration.showNotification('Push Notification', options))
 })

@@ -15,3 +15,11 @@ export const debounce = (fn, delay = 500) => {
     timer = setTimeout(fn, delay)
   }
 }
+
+export const isPWA = () => {
+  return window.matchMedia('(display-mode: standalone)').matches
+}
+
+export const isIOS = () => {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent)
+}

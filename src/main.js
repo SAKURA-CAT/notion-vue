@@ -28,6 +28,10 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register('/sw.js')
     .then(function (registration) {
+      // 注册订阅
+      registration.pushManager.getSubscription().then(async function (subscription) {
+        console.log('subscription:', subscription)
+      })
       console.log('Service Worker registered with scope:', registration.scope)
     })
     .catch(function (error) {

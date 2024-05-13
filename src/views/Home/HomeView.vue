@@ -6,6 +6,8 @@ import { nextTick, onMounted } from 'vue'
 import cover from '@/assets/image/cover.jpeg'
 import HeaderComment from './components/HeaderComment.vue'
 import PwaButton from './components/PwaButton.vue'
+import { isPWA } from '@/utils/common'
+import MsgButton from './components/MsgButton.vue'
 const editStore = useEditStore()
 editStore.init()
 const avatar = 'https://avatars.githubusercontent.com/u/79990647?v=4'
@@ -176,9 +178,13 @@ const handleDelete = (index, msg) => {
             </span>
           </a>
         </HeaderComment>
-        <HeaderComment :avatar="avatar" username="SAKURA-CAT">
+        <HeaderComment :avatar="avatar" username="SAKURA-CAT" v-if="!isPWA()">
           <PwaButton class="text-gray-500 mr-1" text="点击此处" />
-          测试订阅PWA消息~
+          安装PWA应用~
+        </HeaderComment>
+        <HeaderComment :avatar="avatar" username="SAKURA-CAT">
+          <MsgButton class="text-gray-500 mr-1" text="点击此处" />
+          测试PWA内消息推送~
         </HeaderComment>
         <!-- 添加评论 -->
         <div class="flex shrink-0 gap-3 w-full items-center">
